@@ -24,7 +24,7 @@ export const models: Array<Model> = [
     id: "Gemini 1.5",
     label: "Gemini 1.5 Pro",
     apiIdentifier: "gemini-1.5-pro-latest",
-    description: "For generating code",
+    description: "For generating code, summaries, and more",
   },
   {
     id: "Ollama",
