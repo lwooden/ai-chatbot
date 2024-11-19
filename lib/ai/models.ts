@@ -29,7 +29,7 @@ export const models: Array<Model> = [
   {
     id: "Ollama",
     label: "Ollama",
-    apiIdentifier: "Ollama",
+    apiIdentifier: "llama3.2",
     description: "Ragging locally",
   },
 ] as const

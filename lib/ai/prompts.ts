@@ -19,9 +19,10 @@ export const blocksPrompt = `
   - Follow user instructions for which parts to modify
 
   Do not update document right after creating it. Wait for user feedback or request to update it.
-  `;
+  `
 
 export const regularPrompt =
-  'You are a friendly assistant! Keep your responses concise and helpful.';
+  "You are a friendly assistant! Keep your responses concise and helpful."
 
-export const systemPrompt = `${regularPrompt}\n\n${blocksPrompt}`;
+// export const systemPrompt = `${regularPrompt}\n\n${blocksPrompt}`;
+export const systemPrompt = `${regularPrompt}\n\n}`
