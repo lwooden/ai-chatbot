@@ -32,6 +32,12 @@ export const models: Array<Model> = [
     apiIdentifier: "Ollama",
     description: "Ragging locally",
   },
+  {
+    id: "AWS Bedrock",
+    label: "Bedrock",
+    apiIdentifier: "anthropic.claude-3-5-sonnet-20240620-v1:0",
+    description: "Amazon Bedrock",
+  },
 ] as const
 
 export const DEFAULT_MODEL_NAME: string = "gpt-4o-mini"

@@ -1,12 +1,12 @@
 import { openai } from "@ai-sdk/openai"
 import { ollama } from "ollama-ai-provider"
 import { google } from "@ai-sdk/google"
+import { createAmazonBedrock } from "@ai-sdk/amazon-bedrock"
 import {
   experimental_wrapLanguageModel as wrapLanguageModel,
   streamText,
 } from "ai"
 import { OpenAI as oa } from "openai"
-
 import { customMiddleware } from "./custom-middleware"
 
 // Adding OpenAI models
@@ -23,6 +23,21 @@ export const customModel2 = (apiIdentifier: string) => {
     middleware: customMiddleware,
   })
 }
+
+// Adding Bedrock model
+
+export const bedrock = createAmazonBedrock({
+  region: "us-east-1",
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+})
+
+// export const customModel3 = (apiIdentifier: string) => {
+//   return wrapLanguageModel({
+//     model: bedrock(apiIdentifier),
+//     middleware: customMiddleware,
+//   })
+// }
 
 // Adding Ollama model
 // export const customModel3 = ollama({

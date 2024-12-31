@@ -8,8 +8,7 @@ import {
 import { z } from "zod"
 
 import { auth } from "@/app/(auth)/auth"
-import { customModel, customModel2, localOllama } from "@/lib/ai"
-import { ollama } from "ollama-ai-provider"
+import { customModel, customModel2, bedrock } from "@/lib/ai"
 import { models } from "@/lib/ai/models"
 import { systemPrompt } from "@/lib/ai/prompts"
 import {
@@ -92,18 +91,8 @@ export async function POST(request: Request) {
 
   const streamingData = new StreamData()
 
-  // const result = await localOllama.chat.completions.create({
-  //   model: "llama3.2",
-  //   stream: true,
-  //   messages: messages.map((message) => ({
-  //     role: message.role as "user" | "system" | "assistant",
-  //     content: message.content,
-  //   })),
-  // })
-
   const result = await streamText({
-    model: customModel2(model.apiIdentifier),
-    // model: localOllama,
+    model: bedrock("anthropic.claude-3-5-sonnet-20240620-v1:0"),
     system: systemPrompt,
     messages: coreMessages,
     maxSteps: 5,
@@ -382,10 +371,6 @@ export async function POST(request: Request) {
   return result.toDataStreamResponse({
     data: streamingData,
   })
-
-  // for await (const chunk of result) {
-  //   process.stdout.write(chunk.choices[0]?.delta?.content || "")
-  // }
 }
 
 export async function DELETE(request: Request) {
